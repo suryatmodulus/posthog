@@ -22,6 +22,7 @@ import {
 import { FullScreen } from 'lib/components/FullScreen'
 import { dashboardLogic } from 'scenes/dashboard/dashboardLogic'
 import { DashboardType } from '~/types'
+import { DateFilter } from 'lib/components/DateFilter'
 
 export function DashboardHeader(): JSX.Element {
     const { dashboard, draggingEnabled } = useValues(dashboardLogic)
@@ -60,6 +61,10 @@ export function DashboardHeader(): JSX.Element {
                     </div>
                     {dashboard ? (
                         <div className="dashboard-meta">
+                            <Tooltip title="Select time period">
+                                <DateFilter />
+                            </Tooltip>
+
                             {!fullScreen ? (
                                 <Tooltip title={dashboard.pinned ? 'Pinned into sidebar' : 'Pin into sidebar'}>
                                     <Button
