@@ -14,6 +14,7 @@ import {
     RetentionTablePeoplePayload,
     RetentionTrendPeoplePayload,
 } from 'scenes/retention/types'
+import { dashboardItemsModel } from '~/models/dashboardItemsModel'
 
 export const dateOptions = ['Hour', 'Day', 'Week', 'Month']
 
@@ -197,6 +198,9 @@ export const retentionTableLogic = kea<
                 }
                 actions.updatePeople(newPeople)
             }
+        },
+        [dashboardItemsModel.actions.refreshAllDashboardItems]: (filters: Record<string, any>) => {
+            actions.setFilters(filters)
         },
     }),
 })
